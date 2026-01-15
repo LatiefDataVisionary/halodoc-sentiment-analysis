@@ -51,7 +51,7 @@ Untuk deployment aplikasi Streamlit, struktur folder yang disiapkan adalah sebag
 1.  **Clone repositori ini**:
     ```bash
     git clone https://github.com/LatiefDataVisionary/halodoc-sentiment-analysis/
-    cd <nama_folder_proyek>
+    cd halodoc-sentiment-analysis
     ```
 
 2.  **Buat dan aktifkan lingkungan virtual:**
@@ -67,7 +67,16 @@ Untuk deployment aplikasi Streamlit, struktur folder yang disiapkan adalah sebag
     pip install -r requirements.txt
     ```
 
-4.  **Pastikan folder `model_halodoc_sentiment` sudah tersedia** di direktori root proyek Anda, berisi file-file model dan tokenizer yang telah Anda latih dan simpan.
+4.  **📥 UNDUH MODEL (PENTING!):**
+    Karena ukuran model melebihi batas GitHub, Anda wajib mengunduhnya secara manual melalui link berikut:
+    
+    👉 **[Download Model IndoBERT (Google Drive)](https://drive.google.com/file/d/1kZo_oIQb5CCycfGzpGoJEzCgZ84VFptl/view)**
+
+    **Instruksi:**
+    *   Unduh file/folder dari link di atas.
+    *   Jika berbentuk ZIP, ekstrak terlebih dahulu.
+    *   Pastikan nama foldernya adalah `model_halodoc_sentiment`.
+    *   Letakkan folder tersebut di dalam folder utama proyek ini (sejajar dengan `app.py`).
 
 ### Cara Menjalankan Aplikasi Streamlit
 
@@ -112,5 +121,6 @@ Akurasi Total: 0.9560
 Jika Anda memiliki pertanyaan atau ingin berdiskusi lebih lanjut tentang proyek ini, silakan hubungi:
 
 *   Lathif Ramadhan (datasciencelatief@gmail.com)
+Atau bisa klik [disini](mailto:alamat@email.com)
 
 ---
