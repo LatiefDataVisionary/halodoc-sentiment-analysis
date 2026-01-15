@@ -1,0 +1,18 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment
+venv/
+env/
+.env
+
+# IDE settings
+.vscode/
+.idea/
+
+# Dataset 
+data/raw/
+
+# Model (karena size file modelnya besar, maka modlenya saya simpan dan bisa didownload dilink Google Drive berikut: https://drive.google.com/file/d/1kZo_oIQb5CCycfGzpGoJEzCgZ84VFptl/view
+model_halodoc_sentiment/
