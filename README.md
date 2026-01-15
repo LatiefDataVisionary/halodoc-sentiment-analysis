@@ -48,9 +48,9 @@ Untuk deployment aplikasi Streamlit, struktur folder yang disiapkan adalah sebag
 
 ### Langkah-langkah Instalasi
 
-1.  **Clone repositori ini** (jika ini adalah repositori Git Anda):
+1.  **Clone repositori ini**:
     ```bash
-    git clone <URL_REPOSITORI_ANDA>
+    git clone https://github.com/LatiefDataVisionary/halodoc-sentiment-analysis/
     cd <nama_folder_proyek>
     ```
 
@@ -105,7 +105,7 @@ weighted avg       0.96      0.96      0.96      5358
 Akurasi Total: 0.9560
 ```
 
-*Catatan: Untuk detail lengkap mengenai proses pelatihan, EDA, dan visualisasi, silakan lihat file Jupyter Notebook utama proyek ini.* (Anda bisa ganti ini dengan link ke notebook jika dihosting)
+*Catatan: Untuk detail lengkap mengenai proses pelatihan, EDA, dan visualisasi, silakan lihat file Jupyter Notebook utama proyek ini.*
 
 ## 📧 Kontak
 
