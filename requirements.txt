@@ -1,0 +1,17 @@
+pandas
+numpy
+matplotlib
+seaborn
+google-play-scraper
+nltk
+Sastrawi
+scikit-learn
+torch
+transformers
+tqdm
+wordcloud
+openpyxl
+streamlit
+altair
+transformers
+safetensors
