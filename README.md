@@ -6,14 +6,33 @@
 ![Transformers](https://img.shields.io/badge/HuggingFace-FFD21C?style=for-the-badge&logo=huggingface&logoColor=black)
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 
-## 🌐 Demo Aplikasi  <-- TEMPEL DI SINI (BARU)
+## 🌐 Demo Aplikasi  
 
 Ingin mencoba aplikasi ini secara langsung tanpa perlu instalasi?
 Silakan kunjungi versi *live demo* yang telah di-deploy di Hugging Face Spaces:
 
 [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/latief18/halodoc-sentiment-analysis)
 
-> **Catatan:** Karena menggunakan *Free Tier* (CPU Basic), proses prediksi mungkin membutuhkan waktu beberapa detik.
+### Fitur Unggulan Aplikasi:
+
+Aplikasi web ini dibangun menggunakan framework **Streamlit** dengan antarmuka modern (*Glassmorphism UI*) dan terdiri dari tiga modul utama:
+
+**1. 📊 Dashboard Analisis Sentimen**
+   *   **Monitoring Statistik:** Menampilkan *Key Performance Indicators (KPI)* berupa total ulasan dan jumlah ulasan per kategori sentimen dari dataset historis.
+   *   **Visualisasi Interaktif:** Menyajikan grafik *Donut Chart* untuk proporsi sentimen, *Word Cloud* transparan untuk identifikasi kata kunci dominan, dan grafik batang *N-Gram* untuk analisis frasa.
+   *   **Data Explorer:** Tabel interaktif untuk meninjau sampel data ulasan beserta label hasil prediksi.
+
+**2. 📂 Analisis File Massal (Batch Analysis)**
+   *   **Upload Data Eksternal:** Memungkinkan pengguna mengunggah file dataset baru (format `.csv` atau `.xlsx`) berisi ribuan ulasan mentah.
+   *   **Otomatisasi Penuh:** Sistem melakukan *preprocessing* (pembersihan teks & normalisasi slang) dan prediksi sentimen secara otomatis menggunakan model IndoBERT.
+   *   **Instant Dashboard:** Setelah analisis selesai, aplikasi secara dinamis men-generate visualisasi (grafik & word cloud) khusus untuk data yang baru diunggah tersebut.
+   *   **Download Report:** Hasil analisis lengkap beserta *Confidence Score* dapat diunduh kembali dalam format CSV untuk keperluan pelaporan.
+
+**3. 🧪 Uji Coba Model (Live Prediction)**
+   *   **Simulasi Real-time:** Pengguna dapat mengetikkan kalimat ulasan secara manual untuk menguji respon model terhadap input baru.
+   *   **Transparansi Model:** Menampilkan hasil prediksi disertai dengan tingkat keyakinan (*Confidence Score*) dan *Probability Bar* untuk setiap kelas (Positif, Netral, Negatif), sehingga pengguna dapat melihat seberapa yakin model terhadap keputusannya.
+
+> **Catatan Teknis:** Karena deployment menggunakan infrastruktur *Free Tier (CPU Basic)*, proses inferensi mungkin membutuhkan waktu beberapa detik, terutama saat inisialisasi awal (*cold start*).
 
 ## 📋 Ringkasan Proyek
 
