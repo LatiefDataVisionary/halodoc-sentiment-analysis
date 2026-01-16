@@ -1,154 +1,146 @@
-
 # Sentiment Analysis Aplikasi Halodoc dengan IndoBERT
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
 ![Transformers](https://img.shields.io/badge/HuggingFace-FFD21C?style=for-the-badge&logo=huggingface&logoColor=black)
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+![License](https://img.shields.io/github/license/LatiefDataVisionary/halodoc-sentiment-analysis?style=for-the-badge)
 
 ## 📋 Ringkasan Proyek
 
-Proyek ini bertujuan untuk membangun dan melatih model Analisis Sentimen berbasis ulasan pengguna aplikasi Halodoc dari Google Play Store. Model ini menggunakan arsitektur IndoBERT yang telah di-*fine-tune* untuk mengklasifikasikan sentimen ulasan ke dalam tiga kategori: **Negatif (0), Netral (1), dan Positif (2)**. Data ulasan diperoleh melalui *scraping* Google Play Store dan dataset eksternal, kemudian melalui serangkaian tahapan preprocessing (pembersihan, normalisasi slang) dan pelabelan otomatis menggunakan model IndoBERT pre-trained, sebelum akhirnya di-*fine-tune* untuk tugas klasifikasi ini. Aplikasi Streamlit akan digunakan untuk deployment interaktif.
+**Halodoc Sentiment Analysis** adalah proyek *End-to-End Machine Learning* yang bertujuan untuk mengevaluasi kepuasan pengguna aplikasi *telemedicine* Halodoc. Proyek ini tidak hanya sekadar melakukan klasifikasi teks, tetapi juga menerapkan pendekatan **Data Science** yang komprehensif mulai dari akuisisi data, pembersihan tingkat lanjut, hingga *deployment* aplikasi berbasis *cloud*.
+
+Inti dari proyek ini adalah penggunaan model **IndoBERT** (*Indonesian BERT*) yang telah di-*fine-tune* untuk memahami konteks bahasa Indonesia (termasuk bahasa gaul/slang) dalam ulasan aplikasi. Model ini mengklasifikasikan sentimen ke dalam tiga kategori: **Negatif (0), Netral (1), dan Positif (2)**.
+
+Solusi ini hadir untuk mengatasi bias pada *rating* bintang di Google Play Store, di mana seringkali rating yang diberikan pengguna tidak selaras dengan isi ulasan teksnya.
+
+## 🌐 Demo Aplikasi (Live)
+
+Ingin mencoba aplikasi ini secara langsung tanpa instalasi? Kunjungi versi *live demo* yang telah di-deploy di Hugging Face Spaces:
+
+[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue?style=flat-square&logo=huggingface)](https://huggingface.co/spaces/latief18/halodoc-sentiment-analysis)
+
+> **Catatan:** Karena menggunakan infrastruktur *Free Tier* (CPU Basic), proses prediksi mungkin membutuhkan waktu beberapa detik.
 
 ## ✨ Fitur Utama
 
-*   **Akuisisi Data Otomatis:** Mengumpulkan ulasan aplikasi Halodoc langsung dari Google Play Store.
-*   **Preprocessing Teks Komprehensif:** Tahapan pembersihan data seperti *case folding*, penghapusan URL/angka/tanda baca, normalisasi *slang word*, dan penghapusan duplikasi.
-*   **Pelabelan Sentimen Otomatis:** Menggunakan model IndoBERT pre-trained (`mdhugol/indonesia-bert-sentiment-classification`) untuk melabeli ulasan, memfasilitasi pembuatan dataset berlabel dalam skala besar.
-*   **Exploratory Data Analysis (EDA):** Analisis mendalam terhadap distribusi sentimen, panjang kalimat, *word cloud*, dan N-gram untuk memahami karakteristik data.
-*   **Fine-tuning IndoBERT:** Melatih ulang model IndoBERT (`indobenchmark/indobert-base-p1`) untuk klasifikasi sentimen 3-kelas.
-*   **Evaluasi Model:** Menggunakan metrik seperti *Classification Report* dan *Confusion Matrix* untuk menilai performa model.
-*   **Deployment Ready:** Model dan *tokenizer* disimpan dalam format yang siap untuk deployment.
+Aplikasi ini dirancang dengan antarmuka modern (*Glassmorphism UI*) dan memiliki fitur-fitur unggulan sebagai berikut:
 
-## 🚀 Struktur Folder Deployment
+### 1. 📊 Dashboard Analisis Interaktif
+*   **Monitoring Real-time:** Menampilkan total ulasan dan distribusi sentimen dari dataset historis.
+*   **Visualisasi Mendalam:** Dilengkapi dengan *Donut Chart* untuk proporsi sentimen, *Word Cloud* untuk melihat kata kunci dominan, dan analisis *N-Gram* (frasa).
+*   **Data Explorer:** Tabel interaktif untuk meninjau data ulasan mentah beserta label hasil prediksi.
 
-Untuk deployment aplikasi Streamlit, struktur folder yang disiapkan adalah sebagai berikut:
+### 2. 📂 Analisis File Massal (*Batch Analysis*)
+*   **Upload Fleksibel:** Mendukung unggah file eksternal (format `.csv` atau `.xlsx`) berisi ribuan ulasan baru.
+*   **Otomatisasi Penuh:** Sistem melakukan *preprocessing* (pembersihan teks, normalisasi slang) dan prediksi secara otomatis.
+*   **Instant Report:** Menghasilkan dashboard visualisasi khusus untuk data yang baru diunggah.
+*   **Download Hasil:** Pengguna dapat mengunduh hasil analisis lengkap beserta *Confidence Score* dalam format CSV.
 
-```
-. (root folder proyek)
-├── app.py                           # Aplikasi utama Streamlit (UI & interaksi)
-├── model_inference.py               # Modul berisi logika pemuatan model & prediksi
-├── model_halodoc_sentiment/         # Folder berisi model dan tokenizer yang sudah di-fine-tune
+### 3. 🧪 Uji Coba Model (*Live Prediction*)
+*   **Simulasi Input:** Pengguna dapat mengetikkan kalimat ulasan secara manual untuk menguji respon model.
+*   **Transparansi Model:** Menampilkan hasil prediksi disertai tingkat keyakinan (*Confidence Score*) dan probabilitas untuk setiap kelas sentimen.
+
+## 🚀 Struktur Direktori
+
+Berikut adalah struktur folder dalam repositori ini untuk memudahkan navigasi:
+
+halodoc-sentiment-analysis/
+│
+├── 📂 data/                          # Manajemen Data
+│   ├── 📂 processed/                 # Data bersih & berlabel (CSV final)
+│   └── 📂 raw/                       # Data mentah hasil scraping
+│
+├── 📂 model_halodoc_sentiment/       # (PENTING) Folder Artefak Model IndoBERT
 │   ├── config.json
-│   ├── model.safetensors
+│   ├── special_tokens_map.json
 │   ├── tokenizer_config.json
-│   ├── vocab.txt
-│   └── special_tokens_map.json
-├── requirements.txt                 # Daftar pustaka Python yang dibutuhkan
-└── README.md                        # Dokumentasi proyek (file ini)
-```
+│   └── vocab.txt
+│   └── model.safetensors             # File bobot model (Wajib diunduh terpisah)
+│
+├── 📂 notebooks/                     # Eksperimen & Pelatihan Model
+│   └── notebook.ipynb                # Kode lengkap training & evaluasi
+│
+├── app.py                            # File Utama Aplikasi Streamlit (Frontend UI)
+├── inference.py                      # Logika Backend (Model Loader & Preprocessing)
+├── requirements.txt                  # Daftar dependensi library Python
+├── halodoc_reviews_labeled.csv       # Dataset default untuk dashboard
+├── data_uji_deployment.xlsx          # Contoh data untuk pengujian upload
+├── halodoc-logo-desktop.webp         # Aset gambar logo
+└── README.md                         # Dokumentasi Proyek
 
-## 🛠️ Instalasi & Penggunaan
+## 🧠 Detail Model & Unduhan
 
-### Persyaratan Sistem
+Model yang digunakan adalah **IndoBERT Base P1** (`indobenchmark/indobert-base-p1`) yang telah melalui proses *Fine-Tuning*.
 
-*   Python 3.8+
-*   pip (manajer paket Python)
-*   Lingkungan virtual (direkomendasikan)
+### Arsitektur & Pelatihan
+*   **Base Model:** IndoBERT Base (12 layers, 768 hidden units).
+*   **Metode Pelabelan:** *Pseudo-Labeling* menggunakan model *pre-trained* sentiment analysis untuk mengatasi bias rating bintang.
+*   **Preprocessing:** Case folding, pembersihan *noise* (URL, user, angka), dan normalisasi kata tidak baku (*slang words*).
+*   **Hyperparameters:** Epoch: 4, Batch Size: 32, Optimizer: AdamW, Learning Rate: 2e-5.
 
-### Langkah-langkah Instalasi
+### 📥 Unduh Model (Wajib untuk Lokal)
+Dikarenakan ukuran file model (`model.safetensors`) melebihi batas penyimpanan GitHub (>100MB), file tersebut disimpan di penyimpanan eksternal.
 
-1.  **Clone repositori ini**:
+Jika Anda ingin menjalankan aplikasi ini di komputer lokal (Localhost), Anda **WAJIB** mengunduh file model melalui tautan di bawah ini:
+
+👉 **[Download Model IndoBERT (Google Drive)](https://drive.google.com/file/d/1kZo_oIQb5CCycfGzpGoJEzCgZ84VFptl/view)**
+
+**Instruksi Pemasangan Model:**
+1.  Unduh file dari tautan di atas.
+2.  Jika file berbentuk ZIP, ekstrak terlebih dahulu.
+3.  Pastikan file `model.safetensors` (atau `pytorch_model.bin`) dimasukkan ke dalam folder `model_halodoc_sentiment/` di dalam direktori proyek ini.
+
+## 🛠️ Instalasi & Penggunaan Lokal
+
+Ikuti langkah-langkah berikut untuk menjalankan aplikasi di komputer Anda:
+
+1.  **Clone Repositori:**
     ```bash
-    git clone https://github.com/LatiefDataVisionary/halodoc-sentiment-analysis/
+    git clone https://github.com/LatiefDataVisionary/halodoc-sentiment-analysis.git
     cd halodoc-sentiment-analysis
     ```
 
-2.  **Buat dan aktifkan lingkungan virtual:**
+2.  **Siapkan Environment (Opsional tapi Disarankan):**
     ```bash
     python -m venv venv
-    source venv/bin/activate  # Untuk Linux/macOS
+    source venv/bin/activate  # Mac/Linux
     # atau
-    venv\Scriptsctivate      # Untuk Windows
+    venv\Scripts\activate      # Windows
     ```
 
-3.  **Instal semua dependensi:**
+3.  **Instal Dependensi:**
     ```bash
     pip install -r requirements.txt
     ```
 
-4.  **📥 UNDUH MODEL (PENTING!):**
-    Karena ukuran model melebihi batas GitHub, Anda wajib mengunduhnya secara manual melalui link berikut:
-    
-    👉 **[Download Model IndoBERT (Google Drive)](https://drive.google.com/file/d/1kZo_oIQb5CCycfGzpGoJEzCgZ84VFptl/view)**
+4.  **Pastikan Model Terpasang:**
+    Cek kembali apakah folder `model_halodoc_sentiment` sudah berisi file model yang diunduh dari bagian **Detail Model** di atas.
 
-    **Instruksi:**
-    *   Unduh file/folder dari link di atas.
-    *   Jika berbentuk ZIP, ekstrak terlebih dahulu.
-    *   Pastikan nama foldernya adalah `model_halodoc_sentiment`.
-    *   Letakkan folder tersebut di dalam folder utama proyek ini (sejajar dengan `app.py`).
+5.  **Jalankan Aplikasi:**
+    ```bash
+    streamlit run app.py
+    ```
+    Aplikasi akan otomatis terbuka di browser Anda (biasanya di `http://localhost:8501`).
 
-### Cara Menjalankan Aplikasi Streamlit
+## 📊 Hasil Evaluasi
 
-Setelah instalasi selesai dan lingkungan virtual aktif, Anda dapat menjalankan aplikasi Streamlit dengan perintah berikut:
+Model dievaluasi menggunakan *Test Set* terpisah (10% dari total data) dan menunjukkan performa yang sangat baik:
 
-```bash
-streamlit run app.py
-```
+| Metrik | Nilai | Keterangan |
+| :--- | :--- | :--- |
+| **Akurasi** | **95.60%** | Kemampuan model memprediksi benar secara keseluruhan |
+| **F1-Score (Positif)** | **98%** | Sangat baik dalam mengenali ulasan puas |
+| **F1-Score (Negatif)** | **92%** | Sangat baik dalam mendeteksi keluhan |
+| **F1-Score (Netral)** | **84%** | Cukup baik dalam mengenali ulasan ambigu |
 
-Aplikasi akan terbuka di browser web Anda (biasanya di `http://localhost:8501`).
+## 📧 Kontak & Kontribusi
 
-## 🧠 Detail Model
+Proyek ini dikembangkan sebagai bagian dari Tugas Akhir Mata Kuliah **Teknik Pengembangan Model**. Jika Anda memiliki pertanyaan, saran, atau ingin berdiskusi, silakan hubungi:
 
-Model yang digunakan untuk Analisis Sentimen adalah **IndoBERT Base P1** yang telah di-*fine-tune* pada dataset ulasan Halodoc yang sudah melalui preprocessing dan pelabelan otomatis. Model ini mampu mengklasifikasikan sentimen ke dalam 3 kategori: Negatif, Netral, dan Positif.
-
-Proses pelatihan menggunakan *weighted cross-entropy loss* untuk menangani *imbalanced data*, *AdamW optimizer*, dan *linear scheduler with warmup*.
-
-## 📊 Hasil dan Performa
-
-Model mencapai akurasi validasi terbaik sekitar **0.9558** (95.58%). Namun, perlu dicatat bahwa model menunjukkan gejala *overfitting* ringan (nilai *train loss* yang sangat rendah dan *validation loss* yang lebih tinggi dan meningkat seiring *epoch*). Teknik *early stopping* (menyimpan model dengan akurasi validasi terbaik) telah diterapkan untuk mengatasi ini.
-
-Berikut adalah ringkasan performa model pada *test set*:
-
-```
-              precision    recall  f1-score   support
-
-     Negatif       0.90      0.93      0.92       780
-      Netral       0.89      0.80      0.84       582
-     Positif       0.97      0.98      0.98      3996
-
-    accuracy                           0.96      5358
-   macro avg       0.92      0.90      0.91      5358
-weighted avg       0.96      0.96      0.96      5358
-
-Akurasi Total: 0.9560
-```
-
-*Catatan: Untuk detail lengkap mengenai proses pelatihan, EDA, dan visualisasi, silakan lihat file Jupyter Notebook utama proyek ini.*
-
-## 🌐 Demo Aplikasi  
-
-Ingin mencoba aplikasi ini secara langsung tanpa perlu instalasi?
-Silakan kunjungi versi *live demo* yang telah di-deploy di Hugging Face Spaces:
-
-[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/latief18/halodoc-sentiment-analysis)
-
-### Fitur Unggulan Aplikasi:
-
-Aplikasi web ini dibangun menggunakan framework **Streamlit** dengan antarmuka modern (*Glassmorphism UI*) dan terdiri dari tiga modul utama:
-
-**1. 📊 Dashboard Analisis Sentimen**
-   *   **Monitoring Statistik:** Menampilkan *Key Performance Indicators (KPI)* berupa total ulasan dan jumlah ulasan per kategori sentimen dari dataset historis.
-   *   **Visualisasi Interaktif:** Menyajikan grafik *Donut Chart* untuk proporsi sentimen, *Word Cloud* transparan untuk identifikasi kata kunci dominan, dan grafik batang *N-Gram* untuk analisis frasa.
-   *   **Data Explorer:** Tabel interaktif untuk meninjau sampel data ulasan beserta label hasil prediksi.
-
-**2. 📂 Analisis File Massal (Batch Analysis)**
-   *   **Upload Data Eksternal:** Memungkinkan pengguna mengunggah file dataset baru (format `.csv` atau `.xlsx`) berisi ribuan ulasan mentah.
-   *   **Otomatisasi Penuh:** Sistem melakukan *preprocessing* (pembersihan teks & normalisasi slang) dan prediksi sentimen secara otomatis menggunakan model IndoBERT.
-   *   **Instant Dashboard:** Setelah analisis selesai, aplikasi secara dinamis men-generate visualisasi (grafik & word cloud) khusus untuk data yang baru diunggah tersebut.
-   *   **Download Report:** Hasil analisis lengkap beserta *Confidence Score* dapat diunduh kembali dalam format CSV untuk keperluan pelaporan.
-
-**3. 🧪 Uji Coba Model (Live Prediction)**
-   *   **Simulasi Real-time:** Pengguna dapat mengetikkan kalimat ulasan secara manual untuk menguji respon model terhadap input baru.
-   *   **Transparansi Model:** Menampilkan hasil prediksi disertai dengan tingkat keyakinan (*Confidence Score*) dan *Probability Bar* untuk setiap kelas (Positif, Netral, Negatif), sehingga pengguna dapat melihat seberapa yakin model terhadap keputusannya.
-
-> **Catatan Teknis:** Karena deployment menggunakan infrastruktur *Free Tier (CPU Basic)*, proses inferensi mungkin membutuhkan waktu beberapa detik, terutama saat inisialisasi awal (*cold start*).
-
-## 📧 Kontak
-
-Jika Anda memiliki pertanyaan atau ingin berdiskusi lebih lanjut tentang proyek ini, silakan hubungi:
-
-*   Lathif Ramadhan (datasciencelatief@gmail.com)
-Atau bisa klik [disini](mailto:alamat@email.com)
+*   **Lathif Ramadhan**
+*   📩 Email: [datasciencelatief@gmail.com](mailto:datasciencelatief@gmail.com)
+*   🐙 GitHub: [@LatiefDataVisionary](https://github.com/LatiefDataVisionary)
 
 ---
+<p align="center">Made with ❤️ by Data Science Student</p>
