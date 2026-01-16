@@ -6,6 +6,15 @@
 ![Transformers](https://img.shields.io/badge/HuggingFace-FFD21C?style=for-the-badge&logo=huggingface&logoColor=black)
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 
+## 🌐 Demo Aplikasi  <-- TEMPEL DI SINI (BARU)
+
+Ingin mencoba aplikasi ini secara langsung tanpa perlu instalasi?
+Silakan kunjungi versi *live demo* yang telah di-deploy di Hugging Face Spaces:
+
+[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/latief18/halodoc-sentiment-analysis)
+
+> **Catatan:** Karena menggunakan *Free Tier* (CPU Basic), proses prediksi mungkin membutuhkan waktu beberapa detik.
+
 ## 📋 Ringkasan Proyek
 
 Proyek ini bertujuan untuk membangun dan melatih model Analisis Sentimen berbasis ulasan pengguna aplikasi Halodoc dari Google Play Store. Model ini menggunakan arsitektur IndoBERT yang telah di-*fine-tune* untuk mengklasifikasikan sentimen ulasan ke dalam tiga kategori: **Negatif (0), Netral (1), dan Positif (2)**. Data ulasan diperoleh melalui *scraping* Google Play Store dan dataset eksternal, kemudian melalui serangkaian tahapan preprocessing (pembersihan, normalisasi slang) dan pelabelan otomatis menggunakan model IndoBERT pre-trained, sebelum akhirnya di-*fine-tune* untuk tugas klasifikasi ini. Aplikasi Streamlit akan digunakan untuk deployment interaktif.
