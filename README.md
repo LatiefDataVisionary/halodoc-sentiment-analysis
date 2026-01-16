@@ -45,6 +45,7 @@ Aplikasi ini dirancang dengan antarmuka modern (*Glassmorphism UI*) dan memiliki
 
 Berikut adalah struktur folder dalam repositori ini untuk memudahkan navigasi:
 
+```text
 halodoc-sentiment-analysis/
 │
 ├── 📂 data/                          # Manajemen Data
@@ -68,6 +69,7 @@ halodoc-sentiment-analysis/
 ├── data_uji_deployment.xlsx          # Contoh data untuk pengujian upload
 ├── halodoc-logo-desktop.webp         # Aset gambar logo
 └── README.md                         # Dokumentasi Proyek
+```
 
 ## 🧠 Detail Model & Unduhan
 
